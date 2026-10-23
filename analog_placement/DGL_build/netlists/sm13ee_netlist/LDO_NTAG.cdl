@@ -1,0 +1,42 @@
+************************************************************************
+* Library Name: CD2101
+* Cell Name:    LDO_NTAG
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT LDO_NTAG SELVD VDD VHD gnd por vbias vbias2
+*.PININFO SELVD:I VHD:I gnd:I VDD:O por:O vbias:O vbias2:O
+*.CONNECT VDD net066 
+MNM5 net063 net036 gnd gnd n15ll W=150n L=10u M=1
+MNM3 net054 net051 gnd gnd n15ll W=150n L=130n M=5
+MNM1 net051 net035 gnd gnd n15ll W=150n L=130n M=5
+MNM0 net035 net036 net063 gnd n15ll W=150n L=10u M=1
+MNM4 por net054 gnd gnd n15ll W=150n L=130n M=10
+MMN52 net_03 net_01 gnd gnd n15ll W=9u L=1u M=1
+MMN51 net_01 net_01 gnd gnd n15ll W=3u L=1u M=1
+MMN53 net_02 net_01 net_03 gnd n15ll W=21u L=1u M=1
+XQ1 gnd gnd net_bias2 pnp18a4_mis_ckt M=1 AREA=4e-12
+XC2 gnd net036 pipe2r_ckt M=2 W=10u L=38.526u
+XC3 VDD net_03 pipe2r_ckt M=2 W=10u L=38.526u
+RR2 net036 VDD 500K $[RP]
+RR0 net_bias3 gnd 200K $[RP]
+RR9 VHD net085 560K $[RP]
+MM0 vbias2 vbias VHD VHD p33e2r W=3u L=3u M=1
+MMP48 net_01 vbias VHD VHD p33e2r W=3u L=3u M=1
+MMP49 net_02 vbias VHD VHD p33e2r W=3u L=3u M=1
+MMP50 VDD net_02 VHD VHD p33e2r W=30u L=800n M=1
+MMP5 net_bias4 net_bias1 net085 VHD p33e2r W=3u L=3u M=1
+MMP4 vbias vbias VHD VHD p33e2r W=6u L=3u M=1
+MMP3 net_bias1 vbias VHD VHD p33e2r W=6u L=3u M=1
+MMN7 vbias net_bias4 gnd gnd n33e2r W=3u L=3u M=1
+MMN6 net_bias4 net_bias1 gnd gnd n33e2r W=3u L=3u M=1
+MMN1 net_bias1 net_bias1 net_bias2 gnd n33e2r W=6u L=3u M=1
+MMN2 vbias net_bias1 net_bias3 gnd n33e2r W=6u L=3u M=1
+MPM26 net061 SELVD VDD VDD p15ll W=2u L=180n M=1
+MPM25 net_03 net_01 net061 VDD p15ll W=1u L=4u M=1
+MPM3 net054 net051 VDD VDD p15ll W=150n L=130n M=5
+MPM1 net051 net035 VDD VDD p15ll W=150n L=130n M=5
+MPM0 net035 net036 VDD VDD p15ll W=1u L=300n M=10
+MPM4 por net054 VDD VDD p15ll W=150n L=130n M=10
+MMP54 net_03 net_01 VDD VDD p15ll W=1u L=4.5u M=1
+.ENDS

@@ -1,0 +1,58 @@
+ ************************************************************************
+* Library Name: CD2101_HF
+* Cell Name:    compare
+* View Name:    schematic
+************************************************************************
+
+ .SUBCKT compare Rf_dout Vb dem10_sen1 dem10_sen2 vdd vinn vinp vss
+*.PININFO Vb:I dem10_sen1:I dem10_sen2:I vinn:I vinp:I Rf_dout:O vdd:B vss:B
+XC4 net12 vss mim2_ckt LR=20u WR=9.632u MR=1
+XC2 vdd net13 mim2_ckt LR=22.693u WR=22.693u MR=1
+XC3 vdd net1 mim2_ckt LR=22.693u WR=22.693u MR=1
+XC6 net14 vss mim2_ckt LR=19.263u WR=25u MR=1
+XC1 net2 vss mim2_ckt LR=20u WR=9.632u MR=1
+XC0 net5 vss mim2_ckt LR=10u WR=25u MR=4
+XR1 net4 net5 rpposab_ckt W=600n L=12.548u MR=100
+XNM13 net1 vinp net24 vss n18_ckt MR=1 NF=1 L=500n W=20u
+XNM12 net13 vinn net24 vss n18_ckt MR=1 NF=1 L=500n W=20u
+XNM16 net2 net14 vss vss n18_ckt MR=4 NF=1 L=500n W=10u
+XNM41 net26 net2 net25 vss n18_ckt MR=1 NF=1 L=2u W=500n
+XNM26 net12 dem10_sen2 net23 vss n18_ckt MR=1 NF=1 L=180n W=5u
+XNM2 net25 net2 net19 vss n18_ckt MR=1 NF=1 L=2u W=500n
+XNM42 net8 net26 vss vss n18_ckt MR=1 NF=1 L=1u W=10u
+XNM15 net3 net12 vss vss n18_ckt MR=4 NF=1 L=500n W=10u
+XNM14 net24 Vb vss vss n18_ckt MR=1 NF=1 L=500n W=2u
+XNM10 net12 net14 vss vss n18_ckt MR=1 NF=1 L=2u W=10u
+XNM11 net14 net12 vss vss n18_ckt MR=1 NF=1 L=2u W=10u
+XPM14 net12 net12 vss vss n18_ckt MR=1 NF=5 L=2u W=10u
+XNM9 net14 net14 vss vss n18_ckt MR=1 NF=5 L=2u W=10u
+XNM25 net23 net14 vss vss n18_ckt MR=1 NF=1 L=2u W=10u
+XNM4 net18 net6 vss vss n18_ckt MR=1 NF=1 L=600n W=3.6u
+XNM24 net14 dem10_sen2 net22 vss n18_ckt MR=1 NF=1 L=180n W=5u
+XNM23 net22 net12 vss vss n18_ckt MR=1 NF=1 L=2u W=10u
+XNM20 net12 dem10_sen1 net21 vss n18_ckt MR=1 NF=1 L=180n W=5u
+XNM8 net21 net14 vss vss n18_ckt MR=1 NF=1 L=2u W=10u
+XNM7 net20 net12 vss vss n18_ckt MR=1 NF=1 L=2u W=10u
+XNM3 net14 dem10_sen1 net20 vss n18_ckt MR=1 NF=1 L=180n W=5u
+XNM18 net4 net6 vss vss n18_ckt MR=1 NF=1 L=1u W=2u
+XNM1 net19 net2 vss vss n18_ckt MR=1 NF=1 L=2u W=500n
+XNM19 net6 net8 vss vss n18_ckt MR=1 NF=1 L=600n W=600n
+XNM6 net7 net9 vss vss n18_ckt MR=1 NF=1 L=600n W=2.4u
+XNM5 net9 net5 net18 vss n18_ckt MR=1 NF=1 L=600n W=3.6u
+XNM21 Rf_dout net7 vss vss n18_ckt MR=1 NF=1 L=600n W=2.4u
+XNM22 Vb Vb vss vss n18_ckt MR=1 NF=1 L=500n W=2u
+XPM10 net6 net8 vdd vdd p18_ckt MR=1 NF=1 L=600n W=600n
+XPM9 net8 net26 vdd vdd p18_ckt MR=1 NF=2 L=500n W=2.5u
+XPM3 net12 net1 vdd vdd p18_ckt MR=1 NF=1 L=2u W=5u
+XPM7 net2 net3 vdd vdd p18_ckt MR=1 NF=1 L=5u W=12u
+XPM2 net13 net13 vdd vdd p18_ckt MR=1 NF=1 L=9u W=1u
+XPM4 net14 net13 vdd vdd p18_ckt MR=1 NF=1 L=2u W=5u
+XPM6 net3 net3 vdd vdd p18_ckt MR=1 NF=1 L=5u W=10u
+XPM8 net26 net2 vdd vdd p18_ckt MR=1 NF=2 L=1u W=1u
+XPM13 net9 net5 vdd vdd p18_ckt MR=2 NF=1 L=600n W=5u
+XPM15 net9 net6 vdd vdd p18_ckt MR=2 NF=1 L=600n W=5u
+XPM17 net7 net9 vdd vdd p18_ckt MR=2 NF=1 L=600n W=4.8u
+XPM11 net4 net6 vdd vdd p18_ckt MR=2 NF=1 L=600n W=2u
+XPM18 Rf_dout net7 vdd vdd p18_ckt MR=2 NF=1 L=600n W=4.8u
+XPM0 net1 net1 vdd vdd p18_ckt MR=1 NF=1 L=9u W=1u
+.ENDS

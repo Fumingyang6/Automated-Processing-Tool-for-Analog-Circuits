@@ -1,0 +1,50 @@
+************************************************************************
+* auCdl Netlist:
+* 
+* Library Name:  INV
+* Top Cell Name: 0012
+* View Name:     schematic
+* Netlisted on:  Feb 24 14:08:41 2023
+************************************************************************
+
+*.BIPOLAR
+*.RESI = 2000 
+*.RESVAL
+*.CAPVAL
+*.DIOPERI
+*.DIOAREA
+*.EQUATION
+*.SCALE METER
+*.MEGA
+.PARAM
+
+
+
+************************************************************************
+* Library Name: INV
+* Cell Name:    0012
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT 0012 GND VDD vb vb1 vin1 vin2
+*.PININFO GND:I VDD:I vb:I vb1:I vin1:I vin2:I
+MM12 net22 net26 GND GND n50 W=25u L=1u M=4
+MM11 net12 net26 GND GND n50 W=20u L=1u M=4
+MM10 net23 net2 GND GND n50 W=25u L=1u M=4
+MM9 net21 net2 GND GND n50 W=20u L=1u M=4
+MM1 net2 vb1 GND GND n50 W=5u L=1u M=4
+MM0 net26 vb1 GND GND n50 W=5u L=1u M=4
+MM8 net22 net21 VDD VDD p50 W=5u L=1u M=4
+MM7 net21 net21 VDD VDD p50 W=5u L=1u M=4
+MM6 net12 net12 VDD VDD p50 W=5u L=1u M=2
+MM5 net23 net12 VDD VDD p50 W=5u L=1u M=2
+MM4 net3 vb VDD VDD p50 W=3u L=1u M=2
+MM3 net2 vin1 net3 VDD p50 W=5u L=1u M=6
+MM2 net26 vin2 net3 VDD p50 W=5u L=1u M=6
+XC3 net26 net22 mim2_ckt m=1 l=25u w=25u
+XC2 net22 GND mim2_ckt m=1 l=25u w=25u
+XC1 net23 GND mim2_ckt m=1 l=25u w=25u
+XC0 net2 net23 mim2_ckt m=1 l=25u w=25u
+.ENDS
+
+

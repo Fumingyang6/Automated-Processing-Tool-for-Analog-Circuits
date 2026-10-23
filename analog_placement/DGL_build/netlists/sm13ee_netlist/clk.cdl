@@ -1,0 +1,23 @@
+************************************************************************
+* Library Name: CD2101
+* Cell Name:    clk
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT clk VDD anten1 anten2 clk gnd
+*.PININFO VDD:I anten1:I anten2:I gnd:I clk:O
+MM0 net063 net030 gnd gnd n33e2r W=20u L=800n M=1
+MM1 net24 net031 gnd gnd n33e2r W=20u L=800n M=1
+MPM0 clk net016 VDD VDD p15ll W=3u L=130n M=2
+MPM0q net24 net063 VDD VDD p15ll W=600n L=130n M=1
+MPM1 net063 net24 VDD VDD p15ll W=600n L=130n M=1
+MPM3 net016 net055 VDD VDD p15ll W=3u L=130n M=1
+MPM2 net055 net063 VDD VDD p15ll W=1u L=130n M=1
+MNM4 clk net016 gnd gnd n15ll W=1.5u L=130n M=2
+MNM1 net063 net24 gnd gnd n15ll W=600n L=130n M=1
+MNM0 net24 net063 gnd gnd n15ll W=600n L=130n M=1
+MNM3 net016 net055 gnd gnd n15ll W=1.5u L=130n M=1
+MNM2 net055 net063 gnd gnd n15ll W=600n L=130n M=1
+RR0 net030 anten2 15 $[RP]
+RR2 anten1 net031 15 $[RP]
+.ENDS

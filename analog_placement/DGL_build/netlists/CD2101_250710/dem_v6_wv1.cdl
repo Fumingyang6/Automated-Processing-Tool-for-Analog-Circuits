@@ -1,0 +1,31 @@
+ ************************************************************************
+* Library Name: CD2101_HF
+* Cell Name:    dem_v6_wv1
+* View Name:    schematic
+************************************************************************
+
+ .SUBCKT dem_v6_wv1 A1 Rf_dout Rf_dout2 VDD Vb1 decode10_en decode_en2  dem10_sen1 dem10_sen2 dem_in gnd
+*.PININFO A1:I VDD:I Vb1:I decode10_en:I decode_en2:I dem10_sen1:I 
+*.PININFO dem10_sen2:I dem_in:I gnd:I Rf_dout:O Rf_dout2:O
+XM3 decode_enn2 decode_en2 A1 A1 p50_ckt MR=1 NF=1 L=800n W=600n
+XM12 Vb1 decode_enn2 net1 A1 p50_ckt MR=1 NF=6 L=800n W=1000n
+XC0 net2 gnd mim2_ckt LR=14.511u WR=17.229u MR=2
+XM10 net4 decode10_en gnd gnd n50_ckt MR=1 NF=1 L=600n W=2u
+XM0 net3 net3 net4 gnd n50_ckt MR=1 NF=1 L=600n W=2u
+XM5 net1 decode_enn2 gnd gnd n50_ckt MR=1 NF=1 L=600n W=300n
+XM4 decode_enn2 decode_en2 gnd gnd n50_ckt MR=1 NF=1 L=600n W=300n
+XM2 Vb1 decode_en2 net1 gnd n50_ckt MR=1 NF=3 L=600n W=1u
+XPM1 decode10_enn decode10_en VDD VDD p18_ckt MR=1 NF=1 L=180n W=220n
+XPM0 net1 decode10_enn Vb2 VDD p18_ckt MR=1 NF=1 L=180n W=1.5u
+XNM1 gnd neta gnd gnd n18_ckt MR=4 NF=1 L=5u W=5u
+XNM3 gnd netb gnd gnd n18_ckt MR=16 NF=1 L=5u W=5u
+XNM0 Vb2 decode10_enn gnd gnd n18_ckt MR=1 NF=1 L=180n W=220n
+XM8 decode10_enn decode10_en gnd gnd n18_ckt MR=1 NF=1 L=180n W=220n
+XM6 net1 decode10_en Vb2 gnd n18_ckt MR=1 NF=1 L=180n W=1.5u
+XR0 net2 neta rpposab_ckt W=600n L=11.105u MR=35
+XR7 net2 netb rpposab_ckt W=600n L=11.105u MR=70
+XR5 dem_in net2 rpposab_ckt W=600n L=11.706u MR=20
+XR6 net2 net3 rpposab_ckt W=600n L=11.706u MR=4
+XI0 / compare $PINS Rf_dout Vb2 dem10_sen1 dem10_sen2 VDD netb neta gnd
+XI1 / compare $PINS Rf_dout2 Vb2 dem10_sen1 dem10_sen2 VDD neta netb gnd
+.ENDS

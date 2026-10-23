@@ -1,0 +1,81 @@
+************************************************************************
+* auCdl Netlist:
+* 
+* Library Name:  CD2101
+* Top Cell Name: CD2001SLX2_A
+* View Name:     schematic
+* Netlisted on:  Mar 31 10:13:21 2025
+************************************************************************
+
+*.BIPOLAR
+*.RESI = 2000 
+*.RESVAL
+*.CAPVAL
+*.DIOPERI
+*.DIOAREA
+*.EQUATION
+*.SCALE METER
+*.MEGA
+.PARAM
+
+
+
+************************************************************************
+* Library Name: CD2101
+* Cell Name:    compare_wv20200529
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT compare_wv20200529 Rf_dout Vb dem10_sen1 dem10_sen2 vdd vinn vinp vss
+*.PININFO Vb:I dem10_sen1:I dem10_sen2:I vinn:I vinp:I Rf_dout:O vdd:B vss:B
+MPM20 net056 net095 vdd vdd p15ll W=2u L=600n M=2
+MPM21 Rf_dout net096 vdd vdd p15ll W=4.8u L=600n M=1
+MPM18 net095 net033 vdd vdd p15ll W=600n L=600n M=1
+MPM17 net096 net097 vdd vdd p15ll W=4.8u L=600n M=1
+MPM16 net097 net059 vdd vdd p15ll W=600n L=5u M=1
+MPM15 net097 net095 vdd vdd p15ll W=600n L=5u M=1
+MPM1 net030 net041 vdd vdd p15ll W=2u L=1u M=1
+MPM8 net0198 net14 vdd vdd p15ll W=5u L=2u M=1
+MPM9 net0193 net56 vdd vdd p15ll W=5u L=2u M=1
+MPM7 net56 net56 vdd vdd p15ll W=1u L=9u M=1
+MPM10 net0111 net0111 vdd vdd p15ll W=10u L=5u M=1
+MPM6 net14 net14 vdd vdd p15ll W=1u L=9u M=1
+MPM11 net041 net0111 vdd vdd p15ll W=12u L=5u M=1
+MPM5 net0106 net097 vdd vdd p15ll W=600n L=600n M=1
+MPM36 net033 net030 vdd vdd p15ll W=5u L=500n M=1
+XC0 net059 vss pipe2r_ckt M=4 W=10u L=19.263u
+XC1 net041 vss pipe2r_ckt M=1 W=9.632u L=20u
+XC6 net0193 vss pipe2r_ckt M=1 W=10u L=19.263u
+XC3 vdd net14 pipe2r_ckt M=1 W=22.693u L=22.693u
+XC2 vdd net56 pipe2r_ckt M=1 W=22.693u L=22.693u
+XC4 net0198 vss pipe2r_ckt M=1 W=9.632u L=20u
+MNM28 net0107 net097 vss vss n15ll W=600n L=600n M=1
+MNM22 net05 net05 vss vss n15ll W=2u L=500n M=1
+MNM21 Rf_dout net096 vss vss n15ll W=2.4u L=600n M=1
+MNM5 net097 net059 net091 vss n15ll W=3.6u L=600n M=1
+MNM6 net096 net097 vss vss n15ll W=2.4u L=600n M=1
+MNM19 net095 net033 vss vss n15ll W=600n L=600n M=1
+MNM1 net085 net041 vss vss n15ll W=500n L=2u M=1
+MNM18 net056 net095 vss vss n15ll W=2u L=1u M=1
+MNM3 net0193 dem10_sen1 net0103 vss n15ll W=5u L=130n M=1
+MNM7 net0103 net0198 vss vss n15ll W=10u L=2u M=1
+MNM8 net0101 net0193 vss vss n15ll W=10u L=2u M=1
+MNM20 net0198 dem10_sen1 net0101 vss n15ll W=5u L=130n M=1
+MNM23 net099 net0198 vss vss n15ll W=10u L=2u M=1
+MNM24 net0193 dem10_sen2 net099 vss n15ll W=5u L=130n M=1
+MNM4 net091 net095 vss vss n15ll W=3.6u L=600n M=1
+MNM25 net098 net0193 vss vss n15ll W=10u L=2u M=1
+MNM9 net0193 net0193 vss vss n15ll W=50u L=2u M=1
+MPM14 net0198 net0198 vss vss n15ll W=50u L=2u M=1
+MNM11 net0193 net0198 vss vss n15ll W=10u L=2u M=1
+MNM10 net0198 net0193 vss vss n15ll W=10u L=2u M=1
+MNM14 net0151 net05 vss vss n15ll W=2u L=500n M=1
+MNM15 net0111 net0198 vss vss n15ll W=40u L=500n M=1
+MNM42 net033 net030 vss vss n15ll W=10u L=1u M=1
+MNM2 net081 net041 net085 vss n15ll W=500n L=2u M=1
+MNM26 net0198 dem10_sen2 net098 vss n15ll W=5u L=130n M=1
+MNM41 net030 net041 net081 vss n15ll W=500n L=2u M=1
+MNM16 net041 net0193 vss vss n15ll W=40u L=500n M=1
+MNM12 net56 vinn net0151 vss n15ll W=20u L=500n M=1
+MNM13 net0108 vinp net0151 vss n15ll W=20u L=500n M=1
+.ENDS

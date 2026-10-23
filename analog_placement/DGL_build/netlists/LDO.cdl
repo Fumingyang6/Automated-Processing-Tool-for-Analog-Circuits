@@ -1,0 +1,50 @@
+************************************************************************
+* auCdl Netlist:
+* 
+* Library Name:  LDO
+* Top Cell Name: LDO_simu
+* View Name:     schematic
+* Netlisted on:  May 16 15:18:49 2023
+************************************************************************
+
+*.BIPOLAR
+*.RESI = 2000 
+*.RESVAL
+*.CAPVAL
+*.DIOPERI
+*.DIOAREA
+*.EQUATION
+*.SCALE METER
+*.MEGA
+.PARAM
+
+
+
+************************************************************************
+* Library Name: LDO
+* Cell Name:    LDO_1
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT LDO_1 VDD VHD gnd vbias vbias2
+*.PININFO VHD:I gnd:I VDD:O vbias:O vbias2:O
+MMN52 net_03 net_01 gnd gnd n33e2r W=3u L=1u M=3
+MMN51 net_01 net_01 gnd gnd n33e2r W=3u L=1u M=3
+MMN53 net_02 net_01 net_03 gnd n33e2r W=3u L=1u M=4
+RR0 net_bias3 rpposab_ckt M=1 W=1u L=613.7u
+RR9 VHD net84 rpposab_ckt M=1 W=1u L=1.72501u
+XC0 VDD net_03 mim1_ckt m=1 l=28.538u w=27u
+MM0 vbias2 vbias VHD VHD p33e2r W=3u L=3u M=1
+MMP48 net_01 vbias VHD VHD p33e2r W=3u L=3u M=2
+MMP49 net_02 vbias VHD VHD p33e2r W=3u L=3u M=2
+MMP50 VDD net_02 VHD VHD p33e2r W=3u L=800n M=1
+MMP5 net_bias4 net_bias1 net84 VHD p33e2r W=3u L=12u M=10
+MMP4 vbias vbias VHD VHD p33e2r W=3u L=3u M=1
+MMP3 net_bias1 vbias VHD VHD p33e2r W=3u L=3u M=1
+MMN7 vbias net_bias4 gnd gnd n33e2r W=3u L=3u M=1
+MMN6 net_bias4 net_bias1 gnd gnd n33e2r W=3u L=3u M=1
+MMN1 net_bias1 net_bias1 net_bias2 gnd n33e2r W=3u L=6u M=2
+MMN2 vbias net_bias1 net_bias3 gnd n33e2r W=3u L=6u M=2
+MMP54 net_03 net_01 VDD VDD p33e2r W=1u L=3.5u M=1
+.ENDS
+

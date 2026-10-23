@@ -1,0 +1,353 @@
+************************************************************************
+* auCdl Netlist:
+* 
+* Library Name:  CD2101_HF
+* Top Cell Name:NFC_top
+* View Name:     schematic
+* Netlisted on:  Feb 12 15:04:57 2025
+************************************************************************
+
+ *.BIPOLAR
+*.RESI = 2000 
+*.RESVAL
+*.CAPVAL
+*.DIOPERI
+*.DIOAREA
+*.EQUATION
+*.SCALE METER
+*.MEGA
+.PARAM
+
+ 
+ 
+ ************************************************************************
+* Library Name: CD2101_HF
+* Cell Name:    LDO
+* View Name:    schematic
+************************************************************************
+
+ .SUBCKT LDO SELVD VDD VHD gnd por vbias vbias2
+*.PININFO SELVD:I VHD:I gnd:I VDD:O por:O vbias:O vbias2:O
+XMN1 net_bias1 net_bias1 net_bias2 gnd n50_ckt MR=1 NF=2 L=3u W=3u
+XMN6 net_bias4 net_bias1 gnd gnd n50_ckt MR=1 NF=1 L=3u W=3u
+XMN7 vbias net_bias4 gnd gnd n50_ckt MR=1 NF=1 L=3u W=3u
+XM5 vbias net_bias1 net_bias3 gnd n50_ckt MR=1 NF=2 L=3u W=3u
+XC3 VDD net_03 mim2_ckt LR=10u WR=25u MR=4
+XC2 gnd net100 mim2_ckt LR=10u WR=25u MR=4
+QQ0 gnd gnd net_bias2 PNP18A4_M_1 M=1
+XMP54 net_03 net_01 VDD VDD p18_ckt MR=1 NF=1 L=4u W=800n
+XPM4 por net103 VDD VDD p18_ckt MR=1 NF=1 L=180n W=2.2u
+XPM0 net104 net100 VDD VDD p18_ckt MR=5 NF=1 L=300n W=2u
+XPM1 net102 net104 VDD VDD p18_ckt MR=1 NF=1 L=180n W=1.1u
+XPM3 net103 net102 VDD VDD p18_ckt MR=1 NF=1 L=180n W=1.1u
+XPM25 net_03 net_01 net106 VDD p18_ckt MR=1 NF=1 L=12u W=800n
+XPM26 net106 SELVD VDD VDD p18_ckt MR=1 NF=1 L=180n W=2u
+XR9 VHD net105 rpposab_ckt W=1u L=15.17u MR=100
+XR8 net_bias3 gnd rpposab_ckt W=1u L=10.573u MR=100
+XR2 net100 VDD rpposab_ckt W=1u L=13.446u MR=100
+XMN53 net_02 net_01 net_03 gnd n18_ckt MR=1 NF=7 L=1u W=3u
+XMN51 net_01 net_01 gnd gnd n18_ckt MR=1 NF=1 L=1u W=3u
+XMN52 net_03 net_01 gnd gnd n18_ckt MR=1 NF=3 L=1u W=3u
+XNM4 por net103 gnd gnd n18_ckt MR=1 NF=1 L=180n W=2.2u
+XNM0 net104 net100 net101 gnd n18_ckt MR=1 NF=1 L=10u W=220n
+XNM1 net102 net104 gnd gnd n18_ckt MR=1 NF=1 L=180n W=1.1u
+XNM3 net103 net102 gnd gnd n18_ckt MR=1 NF=1 L=180n W=1.1u
+XNM5 net101 net100 gnd gnd n18_ckt MR=1 NF=1 L=10u W=220n
+XM0 VDD net_02 VHD VHD p50_ckt MR=1 NF=3 L=800n W=10u
+XMP3 net_bias1 vbias VHD VHD p50_ckt MR=1 NF=2 L=3u W=3u
+XM1 vbias vbias VHD VHD p50_ckt MR=1 NF=2 L=3u W=3u
+XMP5 net_bias4 net_bias1 net105 VHD p50_ckt MR=1 NF=1 L=3u W=3u
+XM3 net_02 vbias VHD VHD p50_ckt MR=1 NF=1 L=3u W=3u
+XM4 net_01 vbias VHD VHD p50_ckt MR=1 NF=1 L=3u W=3u
+XM2 vbias2 vbias VHD VHD p50_ckt MR=1 NF=1 L=3u W=3u
+.ENDS
+
+ ************************************************************************
+* Library Name: CD2101_HF
+* Cell Name:    rec_nmos100
+* View Name:    schematic
+************************************************************************
+
+ .SUBCKT rec_nmos100 A1 A3 A4 RF_Dout VDD anten1 anten2 gnd
+*.PININFO RF_Dout:I VDD:I anten1:I anten2:I gnd:I A1:O A3:O A4:O
+XNM2 net105 net101 gnd gnd n18_ckt MR=2 NF=1 L=180n W=4u
+XNM0 net101 RF_Dout gnd gnd n18_ckt MR=2 NF=1 L=180n W=4u
+XR17 anten1 net050 rpposab_ckt_p W=1u L=6.263u MR=5   $$$$$
+XR16 anten1 net050 rpposab_ckt_p W=1u L=6.263u MR=5   $$$$$
+XR15 anten1 net050 rpposab_ckt_p W=1u L=6.263u MR=5   $$$$$
+XR14 anten1 net050 rpposab_ckt_p W=1u L=6.263u MR=5   $$$$$
+XR13 anten2 net049 rpposab_ckt_p W=1u L=6.263u MR=5   $$$$$
+XR12 anten2 net049 rpposab_ckt_p W=1u L=6.263u MR=5   $$$$$
+XR10 anten2 net049 rpposab_ckt_p W=1u L=6.263u MR=5   $$$$$
+XR11 anten2 net049 rpposab_ckt_p W=1u L=6.263u MR=5   $$$$$
+XR1 net054 gnd rpposab_ckt W=2u L=10.775u MR=100
+XR7 a2 net044 rpposab_ckt_p W=600n L=7.497u MR=5 $$$$$
+XC1 net044 net054 mim2_ckt LR=8u WR=24u MR=2
+XM2 net030 net92 a2 a2 p50_ckt MR=2 NF=1 L=800n W=4u
+XM3 net030 net030 a2 a2 p50_ckt MR=1 NF=1 L=1u W=2u
+XM4 net054 net054 net030 net030 p50_ckt MR=2 NF=1 L=1u W=5u
+XM1 net34 net92 A1 A1 p50_ckt MR=1 NF=1 L=800n W=10u
+XM0 net92 net34 A1 A1 p50_ckt MR=1 NF=1 L=800n W=10u
+XM25 net049 net34 gnd gnd n50_ckt MR=10 NF=1 L=1u W=10u
+XM26 net050 net34 gnd gnd n50_ckt MR=10 NF=1 L=1u W=10u
+XM23 net92 net101 gnd gnd n50_ckt MR=2 NF=1 L=600n W=10u
+XM14 anten2 net054 gnd gnd n50_ckt MR=50 NF=1 L=1u W=10u
+XM24 net34 net105 gnd gnd n50_ckt MR=2 NF=1 L=600n W=10u
+XM13 anten1 net054 gnd gnd n50_ckt MR=50 NF=1 L=1u W=10u
+XM30 anten1 anten1 A1 gnd n50_ckt MR=5 NF=1 L=1u W=10u
+XM31 anten2 anten2 A1 gnd n50_ckt MR=5 NF=1 L=1u W=10u
+XM29 anten1 anten2 gnd gnd n50_ckt MR=50 NF=1 L=1u W=10u
+XM27 anten2 anten2 a2 gnd n50_ckt MR=1 NF=1 L=1u W=10u
+XM28 anten2 anten1 gnd gnd n50_ckt MR=50 NF=1 L=1u W=10u
+XM19 anten1 anten1 a2 gnd n50_ckt MR=1 NF=1 L=1u W=10u
+XM16 anten1 anten1 A3 gnd n50_ckt MR=1 NF=1 L=1u W=10u
+XM15 anten2 anten2 A3 gnd n50_ckt MR=1 NF=1 L=1u W=10u
+XM33 anten1 anten1 A4 gnd n50_ckt MR=1 NF=1 L=1u W=10u
+XM32 anten2 anten2 A4 gnd n50_ckt MR=1 NF=1 L=1u W=10u
+XPM2 net105 net101 VDD VDD p18_ckt MR=2 NF=1 L=180n W=4u
+XPM0 net101 RF_Dout VDD VDD p18_ckt MR=2 NF=1 L=180n W=4u
+.ENDS
+
+ ************************************************************************
+* Library Name: CD2101_HF
+* Cell Name:    dem100_v5
+* View Name:    schematic
+************************************************************************
+
+ .SUBCKT dem100_v5 A1 A4 VDD bias decode_en2 dem100 dem100_en gnd
+*.PININFO A1:I A4:I VDD:I bias:I dem100_en:I gnd:I decode_en2:O dem100:O
+XC5 A4 gnd mim2_ckt LR=8u WR=8u MR=2
+XM35 net3 dem100v1 gnd gnd n50_ckt MR=1 NF=1 L=600n W=10u
+XM34 dem100v1 net8 gnd gnd n50_ckt MR=1 NF=1 L=2.5u W=4u
+XM26 net8 net2 gnd gnd n50_ckt MR=1 NF=2 L=2u W=20u
+XM21 net22 decode_en2 gnd gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM25 net7 net1 gnd gnd n50_ckt MR=1 NF=2 L=2u W=2u
+XM22 net14 decode_en2 net22 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM20 net16 decode_en2 gnd gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM16 net21 decode_en2 net15 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM14 net18 decode_en2 net19 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM17 net20 decode_en2 net21 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM18 net19 decode_en2 net20 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM13 net10 decode_en2 net18 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM6 net17 net6 gnd gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM7 net12 net6 net17 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM19 net15 decode_en2 net16 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM3 net13 A4 net11 gnd n50_ckt MR=1 NF=1 L=1u W=1u
+XM23 dem100v1 decode_en2 net14 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM1 net6 A4 net13 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM10 decode_en2 net6 net12 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM5 net11 A4 gnd gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM12 net6 decode_en2 net10 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM9 A4 A1 net9 gnd n50_ckt MR=2 NF=1 L=1u W=5u
+XM4 net9 net25 gnd gnd n50_ckt MR=2 NF=1 L=1u W=3u
+XM8 net25 net25 gnd gnd n50_ckt MR=1 NF=1 L=1u W=1u
+XPM10 net4 net3 VDD VDD p18_ckt MR=1 NF=1 L=500n W=1u
+XPM11 dem100 net4 VDD VDD p18_ckt MR=1 NF=1 L=500n W=3u
+XPM0 net1 dem100_en VDD VDD p18_ckt MR=2 NF=1 L=2u W=2u
+XPM2 net2 net1 VDD VDD p18_ckt MR=2 NF=1 L=2u W=2u
+XNM6 dem100 net4 gnd gnd n18_ckt MR=1 NF=1 L=500n W=1500n
+XNM4 net4 net3 gnd gnd n18_ckt MR=1 NF=1 L=500n W=500n
+XNM2 net2 net1 gnd gnd n18_ckt MR=2 NF=1 L=2u W=2u
+XNM0 net1 dem100_en gnd gnd n18_ckt MR=2 NF=1 L=2u W=2u
+XM29 vdd3 net8 A1 A1 p50_ckt MR=2 NF=1 L=800n W=10u
+XM28 net8 net7 A1 A1 p50_ckt MR=1 NF=1 L=8u W=2u
+XM36 net3 dem100v1 VDD VDD p50_ckt MR=1 NF=1 L=800n W=10u
+XM27 net7 net8 A1 A1 p50_ckt MR=1 NF=1 L=8u W=2u
+XM30 net6 decode_en2 vdd3 vdd3 p50_ckt MR=1 NF=1 L=1u W=1u
+XM32 decode_en2 net6 vdd3 vdd3 p50_ckt MR=1 NF=1 L=1u W=2u
+XM31 net6 A4 vdd3 vdd3 p50_ckt MR=1 NF=1 L=1u W=2u
+XM33 dem100v1 decode_en2 vdd3 vdd3 p50_ckt MR=1 NF=1 L=1u W=2u
+XM37 net25 bias A1 A1 p50_ckt MR=1 NF=1 L=3u W=1u
+.ENDS
+
+ ************************************************************************
+* Library Name: CD2101_HF
+* Cell Name:    clk
+* View Name:    schematic
+************************************************************************
+
+ .SUBCKT clk VDD anten1 anten2 clk gnd
+*.PININFO VDD:I anten1:I anten2:I gnd:I clk:O
+XNM2 net6 net1 gnd gnd n18_ckt MR=1 NF=1 L=180n W=600n
+XNM3 net5 net6 gnd gnd n18_ckt MR=1 NF=1 L=180n W=1.5u
+XNM0 net3 net1 gnd gnd n18_ckt MR=1 NF=1 L=180n W=600n
+XNM1 net1 net3 gnd gnd n18_ckt MR=1 NF=1 L=180n W=600n
+XNM4 clk net5 gnd gnd n18_ckt MR=2 NF=1 L=180n W=1.5u
+XR11 net2 anten2 rpposab_ckt_p W=600n L=8.68u MR=5 $$$$$
+XR10 net2 anten2 rpposab_ckt_p W=600n L=8.68u MR=5 $$$$$
+XR7 anten1 net4 rpposab_ckt_p W=600n L=8.68u MR=5 $$$$$
+XR6 anten1 net4 rpposab_ckt_p W=600n L=8.68u MR=5 $$$$$
+XR9 net2 anten2 rpposab_ckt_p W=600n L=8.68u MR=5 $$$$$
+XR4 anten1 net4 rpposab_ckt_p W=600n L=8.68u MR=5 $$$$$
+XR8 net2 anten2 rpposab_ckt_p W=600n L=8.68u MR=5 $$$$$
+XR5 anten1 net4 rpposab_ckt_p W=600n L=8.68u MR=5 $$$$$
+XPM4 net3 net1 VDD VDD p18_ckt MR=1 NF=1 L=180n W=600n
+XPM8 clk net5 VDD VDD p18_ckt MR=2 NF=1 L=180n W=1u
+XPM6 net6 net1 VDD VDD p18_ckt MR=1 NF=1 L=180n W=1u
+XPM5 net1 net3 VDD VDD p18_ckt MR=1 NF=1 L=180n W=600n
+XPM7 net5 net6 VDD VDD p18_ckt MR=1 NF=1 L=180n W=1u
+XM1 net3 net4 gnd gnd n50_ckt MR=1 NF=2 L=800n W=10u
+XM0 net1 net2 gnd gnd n50_ckt MR=1 NF=2 L=800n W=10u
+.ENDS
+
+ ************************************************************************
+* Library Name: CD2101_HF
+* Cell Name:    compare
+* View Name:    schematic
+************************************************************************
+
+ .SUBCKT compare Rf_dout Vb dem10_sen1 dem10_sen2 vdd vinn vinp vss
+*.PININFO Vb:I dem10_sen1:I dem10_sen2:I vinn:I vinp:I Rf_dout:O vdd:B vss:B
+XC4 net12 vss mim2_ckt LR=20u WR=9.632u MR=1
+XC2 vdd net13 mim2_ckt LR=22.693u WR=22.693u MR=1
+XC3 vdd net1 mim2_ckt LR=22.693u WR=22.693u MR=1
+XC6 net14 vss mim2_ckt LR=19.263u WR=25u MR=1
+XC1 net2 vss mim2_ckt LR=20u WR=9.632u MR=1
+XC0 net5 vss mim2_ckt LR=10u WR=25u MR=4
+XR1 net4 net5 rpposab_ckt W=600n L=12.548u MR=100
+XNM13 net1 vinp net24 vss n18_ckt MR=1 NF=1 L=500n W=20u
+XNM12 net13 vinn net24 vss n18_ckt MR=1 NF=1 L=500n W=20u
+XNM16 net2 net14 vss vss n18_ckt MR=4 NF=1 L=500n W=10u
+XNM41 net26 net2 net25 vss n18_ckt MR=1 NF=1 L=2u W=500n
+XNM26 net12 dem10_sen2 net23 vss n18_ckt MR=1 NF=1 L=180n W=5u
+XNM2 net25 net2 net19 vss n18_ckt MR=1 NF=1 L=2u W=500n
+XNM42 net8 net26 vss vss n18_ckt MR=1 NF=1 L=1u W=10u
+XNM15 net3 net12 vss vss n18_ckt MR=4 NF=1 L=500n W=10u
+XNM14 net24 Vb vss vss n18_ckt MR=1 NF=1 L=500n W=2u
+XNM10 net12 net14 vss vss n18_ckt MR=1 NF=1 L=2u W=10u
+XNM11 net14 net12 vss vss n18_ckt MR=1 NF=1 L=2u W=10u
+XPM14 net12 net12 vss vss n18_ckt MR=1 NF=5 L=2u W=10u
+XNM9 net14 net14 vss vss n18_ckt MR=1 NF=5 L=2u W=10u
+XNM25 net23 net14 vss vss n18_ckt MR=1 NF=1 L=2u W=10u
+XNM4 net18 net6 vss vss n18_ckt MR=1 NF=1 L=600n W=3.6u
+XNM24 net14 dem10_sen2 net22 vss n18_ckt MR=1 NF=1 L=180n W=5u
+XNM23 net22 net12 vss vss n18_ckt MR=1 NF=1 L=2u W=10u
+XNM20 net12 dem10_sen1 net21 vss n18_ckt MR=1 NF=1 L=180n W=5u
+XNM8 net21 net14 vss vss n18_ckt MR=1 NF=1 L=2u W=10u
+XNM7 net20 net12 vss vss n18_ckt MR=1 NF=1 L=2u W=10u
+XNM3 net14 dem10_sen1 net20 vss n18_ckt MR=1 NF=1 L=180n W=5u
+XNM18 net4 net6 vss vss n18_ckt MR=1 NF=1 L=1u W=2u
+XNM1 net19 net2 vss vss n18_ckt MR=1 NF=1 L=2u W=500n
+XNM19 net6 net8 vss vss n18_ckt MR=1 NF=1 L=600n W=600n
+XNM6 net7 net9 vss vss n18_ckt MR=1 NF=1 L=600n W=2.4u
+XNM5 net9 net5 net18 vss n18_ckt MR=1 NF=1 L=600n W=3.6u
+XNM21 Rf_dout net7 vss vss n18_ckt MR=1 NF=1 L=600n W=2.4u
+XNM22 Vb Vb vss vss n18_ckt MR=1 NF=1 L=500n W=2u
+XPM10 net6 net8 vdd vdd p18_ckt MR=1 NF=1 L=600n W=600n
+XPM9 net8 net26 vdd vdd p18_ckt MR=1 NF=2 L=500n W=2.5u
+XPM3 net12 net1 vdd vdd p18_ckt MR=1 NF=1 L=2u W=5u
+XPM7 net2 net3 vdd vdd p18_ckt MR=1 NF=1 L=5u W=12u
+XPM2 net13 net13 vdd vdd p18_ckt MR=1 NF=1 L=9u W=1u
+XPM4 net14 net13 vdd vdd p18_ckt MR=1 NF=1 L=2u W=5u
+XPM6 net3 net3 vdd vdd p18_ckt MR=1 NF=1 L=5u W=10u
+XPM8 net26 net2 vdd vdd p18_ckt MR=1 NF=2 L=1u W=1u
+XPM13 net9 net5 vdd vdd p18_ckt MR=2 NF=1 L=600n W=5u
+XPM15 net9 net6 vdd vdd p18_ckt MR=2 NF=1 L=600n W=5u
+XPM17 net7 net9 vdd vdd p18_ckt MR=2 NF=1 L=600n W=4.8u
+XPM11 net4 net6 vdd vdd p18_ckt MR=2 NF=1 L=600n W=2u
+XPM18 Rf_dout net7 vdd vdd p18_ckt MR=2 NF=1 L=600n W=4.8u
+XPM0 net1 net1 vdd vdd p18_ckt MR=1 NF=1 L=9u W=1u
+.ENDS
+
+ ************************************************************************
+* Library Name: CD2101_HF
+* Cell Name:    dem_v6_wv1
+* View Name:    schematic
+************************************************************************
+
+ .SUBCKT dem_v6_wv1 A1 Rf_dout Rf_dout2 VDD Vb1 decode10_en decode_en2  dem10_sen1 dem10_sen2 dem_in gnd
+*.PININFO A1:I VDD:I Vb1:I decode10_en:I decode_en2:I dem10_sen1:I 
+*.PININFO dem10_sen2:I dem_in:I gnd:I Rf_dout:O Rf_dout2:O
+XM3 decode_enn2 decode_en2 A1 A1 p50_ckt MR=1 NF=1 L=800n W=600n
+XM12 Vb1 decode_enn2 net1 A1 p50_ckt MR=1 NF=6 L=800n W=1000n
+XC0 net2 gnd mim2_ckt LR=14.511u WR=17.229u MR=2
+XM10 net4 decode10_en gnd gnd n50_ckt MR=1 NF=1 L=600n W=2u
+XM0 net3 net3 net4 gnd n50_ckt MR=1 NF=1 L=600n W=2u
+XM5 net1 decode_enn2 gnd gnd n50_ckt MR=1 NF=1 L=600n W=300n
+XM4 decode_enn2 decode_en2 gnd gnd n50_ckt MR=1 NF=1 L=600n W=300n
+XM2 Vb1 decode_en2 net1 gnd n50_ckt MR=1 NF=3 L=600n W=1u
+XPM1 decode10_enn decode10_en VDD VDD p18_ckt MR=1 NF=1 L=180n W=220n
+XPM0 net1 decode10_enn Vb2 VDD p18_ckt MR=1 NF=1 L=180n W=1.5u
+XNM1 gnd neta gnd gnd n18_ckt MR=4 NF=1 L=5u W=5u
+XNM3 gnd netb gnd gnd n18_ckt MR=16 NF=1 L=5u W=5u
+XNM0 Vb2 decode10_enn gnd gnd n18_ckt MR=1 NF=1 L=180n W=220n
+XM8 decode10_enn decode10_en gnd gnd n18_ckt MR=1 NF=1 L=180n W=220n
+XM6 net1 decode10_en Vb2 gnd n18_ckt MR=1 NF=1 L=180n W=1.5u
+XR0 net2 neta rpposab_ckt W=600n L=11.105u MR=35
+XR7 net2 netb rpposab_ckt W=600n L=11.105u MR=70
+XR5 dem_in net2 rpposab_ckt W=600n L=11.706u MR=20
+XR6 net2 net3 rpposab_ckt W=600n L=11.706u MR=4
+XI0 / compare $PINS Rf_dout Vb2 dem10_sen1 dem10_sen2 VDD netb neta gnd
+XI1 / compare $PINS Rf_dout2 Vb2 dem10_sen1 dem10_sen2 VDD neta netb gnd
+.ENDS
+
+ ************************************************************************
+* Library Name: CD2101_HF
+* Cell Name:    top
+* View Name:    schematic
+************************************************************************
+
+ .SUBCKT top RF_din SELVD VSS anten1 anten2 clk13m dem10_e dem10_en dem10_s  dem10_sen1 dem10_sen2 dem100 dem100_en por vdd
+*.PININFO RF_din:I SELVD:I VSS:I anten1:I anten2:I dem10_en:I dem10_sen1:I 
+*.PININFO dem10_sen2:I dem100_en:I clk13m:O dem10_e:O dem10_s:O dem100:O por:O 
+*.PININFO vdd:O
+XI0 / LDO $PINS SELVD vdd A1 VSS por net5 net4
+XI1 / rec_nmos100 $PINS A1 A3 net13 RF_din vdd anten1 anten2 VSS
+XI2 / dem100_v5 $PINS A1 net13 vdd net5 decode_en2 dem100 dem100_en VSS
+XI3 / clk $PINS vdd anten1 anten2 clk13m VSS
+XI4 / dem_v6_wv1 $PINS A1 dem10_s dem10_e vdd net4 dem10_en decode_en2 dem10_sen1 dem10_sen2 A3 VSS
+XC1 anten1 anten311 mim2_ckt LR=12.5u WR=10u MR=12
+XC111 anten311 anten31 mim2_ckt LR=12.5u WR=10u MR=11
+XC11 anten31 anten3111 mim2_ckt LR=12.5u WR=10u MR=12
+XC112 anten3111 anten3 mim2_ckt LR=12.5u WR=10u MR=12
+XC2 anten3 anten2111 mim2_ckt LR=12.5u WR=10u MR=11
+XC222 anten2111 anten21 mim2_ckt LR=12.5u WR=10u MR=12
+XC2211 anten21 anten2212 mim2_ckt LR=12.5u WR=10u MR=12
+XC2222 anten2212 anten2 mim2_ckt LR=12.5u WR=10u MR=12
+XNM8 VSS vdd VSS VSS n18_ckt MR=100 NF=1 L=5u W=5u
+XNM7 VSS vdd VSS VSS n18_ckt MR=100 NF=1 L=5u W=5u
+XNM6 VSS vdd VSS VSS n18_ckt MR=100 NF=1 L=5u W=5u
+XNM5 VSS vdd VSS VSS n18_ckt MR=100 NF=1 L=5u W=5u
+XNM4 VSS vdd VSS VSS n18_ckt MR=100 NF=1 L=5u W=5u
+XNM3 VSS vdd VSS VSS n18_ckt MR=100 NF=1 L=5u W=5u
+XNM2 VSS vdd VSS VSS n18_ckt MR=100 NF=1 L=5u W=5u
+XNM0 VSS vdd VSS VSS n18_ckt MR=100 NF=1 L=5u W=5u
+XM45 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM44 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM43 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM42 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM41 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM40 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM39 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM38 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM35 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM34 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM33 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM32 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM31 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM25 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM24 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM23 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM30 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM29 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM28 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM27 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM26 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM17 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM16 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM15 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM14 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM13 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM12 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM11 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM10 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM9 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM8 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM4 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM2 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM7 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM6 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+XM5 VSS A1 VSS VSS n50_ckt MR=100 NF=1 L=5u W=5u
+.ENDS
+
+ 

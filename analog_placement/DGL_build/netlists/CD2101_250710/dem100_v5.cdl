@@ -1,0 +1,51 @@
+ ************************************************************************
+* Library Name: CD2101_HF
+* Cell Name:    dem100_v5
+* View Name:    schematic
+************************************************************************
+
+ .SUBCKT dem100_v5 A1 A4 VDD bias decode_en2 dem100 dem100_en gnd
+*.PININFO A1:I A4:I VDD:I bias:I dem100_en:I gnd:I decode_en2:O dem100:O
+XC5 A4 gnd mim2_ckt LR=8u WR=8u MR=2
+XM35 net3 dem100v1 gnd gnd n50_ckt MR=1 NF=1 L=600n W=10u
+XM34 dem100v1 net8 gnd gnd n50_ckt MR=1 NF=1 L=2.5u W=4u
+XM26 net8 net2 gnd gnd n50_ckt MR=1 NF=2 L=2u W=20u
+XM21 net22 decode_en2 gnd gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM25 net7 net1 gnd gnd n50_ckt MR=1 NF=2 L=2u W=2u
+XM22 net14 decode_en2 net22 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM20 net16 decode_en2 gnd gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM16 net21 decode_en2 net15 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM14 net18 decode_en2 net19 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM17 net20 decode_en2 net21 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM18 net19 decode_en2 net20 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM13 net10 decode_en2 net18 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM6 net17 net6 gnd gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM7 net12 net6 net17 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM19 net15 decode_en2 net16 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM3 net13 A4 net11 gnd n50_ckt MR=1 NF=1 L=1u W=1u
+XM23 dem100v1 decode_en2 net14 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM1 net6 A4 net13 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM10 decode_en2 net6 net12 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM5 net11 A4 gnd gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM12 net6 decode_en2 net10 gnd n50_ckt MR=1 NF=1 L=1u W=2u
+XM9 A4 A1 net9 gnd n50_ckt MR=2 NF=1 L=1u W=5u
+XM4 net9 net25 gnd gnd n50_ckt MR=2 NF=1 L=1u W=3u
+XM8 net25 net25 gnd gnd n50_ckt MR=1 NF=1 L=1u W=1u
+XPM10 net4 net3 VDD VDD p18_ckt MR=1 NF=1 L=500n W=1u
+XPM11 dem100 net4 VDD VDD p18_ckt MR=1 NF=1 L=500n W=3u
+XPM0 net1 dem100_en VDD VDD p18_ckt MR=2 NF=1 L=2u W=2u
+XPM2 net2 net1 VDD VDD p18_ckt MR=2 NF=1 L=2u W=2u
+XNM6 dem100 net4 gnd gnd n18_ckt MR=1 NF=1 L=500n W=1500n
+XNM4 net4 net3 gnd gnd n18_ckt MR=1 NF=1 L=500n W=500n
+XNM2 net2 net1 gnd gnd n18_ckt MR=2 NF=1 L=2u W=2u
+XNM0 net1 dem100_en gnd gnd n18_ckt MR=2 NF=1 L=2u W=2u
+XM29 vdd3 net8 A1 A1 p50_ckt MR=2 NF=1 L=800n W=10u
+XM28 net8 net7 A1 A1 p50_ckt MR=1 NF=1 L=8u W=2u
+XM36 net3 dem100v1 VDD VDD p50_ckt MR=1 NF=1 L=800n W=10u
+XM27 net7 net8 A1 A1 p50_ckt MR=1 NF=1 L=8u W=2u
+XM30 net6 decode_en2 vdd3 vdd3 p50_ckt MR=1 NF=1 L=1u W=1u
+XM32 decode_en2 net6 vdd3 vdd3 p50_ckt MR=1 NF=1 L=1u W=2u
+XM31 net6 A4 vdd3 vdd3 p50_ckt MR=1 NF=1 L=1u W=2u
+XM33 dem100v1 decode_en2 vdd3 vdd3 p50_ckt MR=1 NF=1 L=1u W=2u
+XM37 net25 bias A1 A1 p50_ckt MR=1 NF=1 L=3u W=1u
+.ENDS

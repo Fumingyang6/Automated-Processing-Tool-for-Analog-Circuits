@@ -1,0 +1,29 @@
+ ************************************************************************
+* Library Name: CD2101_HF
+* Cell Name:    clk
+* View Name:    schematic
+************************************************************************
+
+ .SUBCKT clk VDD anten1 anten2 clk gnd
+*.PININFO VDD:I anten1:I anten2:I gnd:I clk:O
+XNM2 net6 net1 gnd gnd n18_ckt MR=1 NF=1 L=180n W=600n
+XNM3 net5 net6 gnd gnd n18_ckt MR=1 NF=1 L=180n W=1.5u
+XNM0 net3 net1 gnd gnd n18_ckt MR=1 NF=1 L=180n W=600n
+XNM1 net1 net3 gnd gnd n18_ckt MR=1 NF=1 L=180n W=600n
+XNM4 clk net5 gnd gnd n18_ckt MR=2 NF=1 L=180n W=1.5u
+XR11 net2 anten2 rpposab_ckt_p W=600n L=8.68u MR=5 $$$$$
+XR10 net2 anten2 rpposab_ckt_p W=600n L=8.68u MR=5 $$$$$
+XR7 anten1 net4 rpposab_ckt_p W=600n L=8.68u MR=5 $$$$$
+XR6 anten1 net4 rpposab_ckt_p W=600n L=8.68u MR=5 $$$$$
+XR9 net2 anten2 rpposab_ckt_p W=600n L=8.68u MR=5 $$$$$
+XR4 anten1 net4 rpposab_ckt_p W=600n L=8.68u MR=5 $$$$$
+XR8 net2 anten2 rpposab_ckt_p W=600n L=8.68u MR=5 $$$$$
+XR5 anten1 net4 rpposab_ckt_p W=600n L=8.68u MR=5 $$$$$
+XPM4 net3 net1 VDD VDD p18_ckt MR=1 NF=1 L=180n W=600n
+XPM8 clk net5 VDD VDD p18_ckt MR=2 NF=1 L=180n W=1u
+XPM6 net6 net1 VDD VDD p18_ckt MR=1 NF=1 L=180n W=1u
+XPM5 net1 net3 VDD VDD p18_ckt MR=1 NF=1 L=180n W=600n
+XPM7 net5 net6 VDD VDD p18_ckt MR=1 NF=1 L=180n W=1u
+XM1 net3 net4 gnd gnd n50_ckt MR=1 NF=2 L=800n W=10u
+XM0 net1 net2 gnd gnd n50_ckt MR=1 NF=2 L=800n W=10u
+.ENDS

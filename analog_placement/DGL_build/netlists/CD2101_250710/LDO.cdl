@@ -1,0 +1,63 @@
+************************************************************************
+* auCdl Netlist:
+* 
+* Library Name:  CD2101_HF
+* Top Cell Name:NFC_top
+* View Name:     schematic
+* Netlisted on:  Feb 12 15:04:57 2025
+************************************************************************
+
+ *.BIPOLAR
+*.RESI = 2000 
+*.RESVAL
+*.CAPVAL
+*.DIOPERI
+*.DIOAREA
+*.EQUATION
+*.SCALE METER
+*.MEGA
+.PARAM
+
+ 
+ 
+ ************************************************************************
+* Library Name: CD2101_HF
+* Cell Name:    LDO
+* View Name:    schematic
+************************************************************************
+
+ .SUBCKT LDO SELVD VDD VHD gnd por vbias vbias2
+*.PININFO SELVD:I VHD:I gnd:I VDD:O por:O vbias:O vbias2:O
+XMN1 net_bias1 net_bias1 net_bias2 gnd n50_ckt MR=1 NF=2 L=3u W=3u
+XMN6 net_bias4 net_bias1 gnd gnd n50_ckt MR=1 NF=1 L=3u W=3u
+XMN7 vbias net_bias4 gnd gnd n50_ckt MR=1 NF=1 L=3u W=3u
+XM5 vbias net_bias1 net_bias3 gnd n50_ckt MR=1 NF=2 L=3u W=3u
+XC3 VDD net_03 mim2_ckt LR=10u WR=25u MR=4
+XC2 gnd net100 mim2_ckt LR=10u WR=25u MR=4
+QQ0 gnd gnd net_bias2 PNP18A4_M_1 M=1
+XMP54 net_03 net_01 VDD VDD p18_ckt MR=1 NF=1 L=4u W=800n
+XPM4 por net103 VDD VDD p18_ckt MR=1 NF=1 L=180n W=2.2u
+XPM0 net104 net100 VDD VDD p18_ckt MR=5 NF=1 L=300n W=2u
+XPM1 net102 net104 VDD VDD p18_ckt MR=1 NF=1 L=180n W=1.1u
+XPM3 net103 net102 VDD VDD p18_ckt MR=1 NF=1 L=180n W=1.1u
+XPM25 net_03 net_01 net106 VDD p18_ckt MR=1 NF=1 L=12u W=800n
+XPM26 net106 SELVD VDD VDD p18_ckt MR=1 NF=1 L=180n W=2u
+XR9 VHD net105 rpposab_ckt W=1u L=15.17u MR=100
+XR8 net_bias3 gnd rpposab_ckt W=1u L=10.573u MR=100
+XR2 net100 VDD rpposab_ckt W=1u L=13.446u MR=100
+XMN53 net_02 net_01 net_03 gnd n18_ckt MR=1 NF=7 L=1u W=3u
+XMN51 net_01 net_01 gnd gnd n18_ckt MR=1 NF=1 L=1u W=3u
+XMN52 net_03 net_01 gnd gnd n18_ckt MR=1 NF=3 L=1u W=3u
+XNM4 por net103 gnd gnd n18_ckt MR=1 NF=1 L=180n W=2.2u
+XNM0 net104 net100 net101 gnd n18_ckt MR=1 NF=1 L=10u W=220n
+XNM1 net102 net104 gnd gnd n18_ckt MR=1 NF=1 L=180n W=1.1u
+XNM3 net103 net102 gnd gnd n18_ckt MR=1 NF=1 L=180n W=1.1u
+XNM5 net101 net100 gnd gnd n18_ckt MR=1 NF=1 L=10u W=220n
+XM0 VDD net_02 VHD VHD p50_ckt MR=1 NF=3 L=800n W=10u
+XMP3 net_bias1 vbias VHD VHD p50_ckt MR=1 NF=2 L=3u W=3u
+XM1 vbias vbias VHD VHD p50_ckt MR=1 NF=2 L=3u W=3u
+XMP5 net_bias4 net_bias1 net105 VHD p50_ckt MR=1 NF=1 L=3u W=3u
+XM3 net_02 vbias VHD VHD p50_ckt MR=1 NF=1 L=3u W=3u
+XM4 net_01 vbias VHD VHD p50_ckt MR=1 NF=1 L=3u W=3u
+XM2 vbias2 vbias VHD VHD p50_ckt MR=1 NF=1 L=3u W=3u
+.ENDS

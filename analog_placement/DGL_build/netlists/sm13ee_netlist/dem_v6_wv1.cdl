@@ -1,0 +1,32 @@
+************************************************************************
+* Library Name: CD2101
+* Cell Name:    dem_v6_wv1
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT dem_v6_wv1 A1 Rf_dout Rf_dout2 VDD Vb1 decode10_en decode_en2 
++ dem10_sen1 dem10_sen2 dem_in gnd
+*.PININFO A1:I VDD:I Vb1:I decode10_en:I decode_en2:I dem10_sen1:I 
+*.PININFO dem10_sen2:I dem_in:I gnd:I Rf_dout:O Rf_dout2:O
+MM6 net037 decode10_en Vb2 gnd n15ll W=1.5u L=130n M=1
+MM8 decode10_enn decode10_en gnd gnd n15ll W=150n L=130n M=1
+MNM0 Vb2 decode10_enn gnd gnd n15ll W=150n L=130n M=1
+MNM3 gnd netb gnd gnd n15ll W=5u L=5u M=16
+MNM1 gnd neta gnd gnd n15ll W=5u L=5u M=4
+MM7 net037 decode10_enn Vb2 VDD p15ll W=1.5u L=130n M=1
+MM9 decode10_enn decode10_en VDD VDD p15ll W=150n L=130n M=1
+XC0 net036 gnd pipe2r_ckt M=1 W=17.229u L=22.361u
+MM1 Vb1 decode_enn2 net037 A1 p33e2r W=6u L=800n M=1
+MM3 decode_enn2 decode_en2 A1 A1 p33e2r W=600n L=800n M=1
+MM2 Vb1 decode_en2 net037 gnd n33e2r W=6u L=600n M=1
+MM4 decode_enn2 decode_en2 gnd gnd n33e2r W=600n L=600n M=1
+MM5 net037 decode_enn2 gnd gnd n33e2r W=600n L=600n M=1
+MM0 net016 net016 net038 gnd n33e2r W=2u L=600n M=1
+MM10 net038 decode10_en gnd gnd n33e2r W=2u L=600n M=1
+RR7 net036 netb 500K $[RP]
+RR6 net036 net016 30K $[RP]
+RR5 dem_in net036 150K $[RP]
+RR0 net036 neta 250K $[RP]
+XI106 Rf_dout2 Vb2 dem10_sen1 dem10_sen2 VDD neta netb gnd / compare_wv20200529
+XI107 Rf_dout Vb2 dem10_sen1 dem10_sen2 VDD netb neta gnd / compare_wv20200529
+.ENDS

@@ -1,0 +1,51 @@
+************************************************************************
+* Library Name: CD2101
+* Cell Name:    rec_nmos100
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT rec_nmos100 A1 A3 A4 RF_Dout RF_Dout_H VDD anten1 anten2 gnd
+*.PININFO RF_Dout:I RF_Dout_H:I VDD:I anten1:I anten2:I gnd:I A1:O A3:O A4:O
+RR3 gnd gnd 10K $[RP]
+RR0 anten1 net050 1K $[RP]
+RR2 gnd gnd 5K $[RP]
+RR8 anten2 net049 1K $[RP]
+RR4 net054 gnd 250K $[RP]
+RR5 a2 net044 1K $[RP]
+MPM2 net105 net101 VDD VDD p15ll W=4u L=130n M=2
+MPM0 net101 RF_Dout VDD VDD p15ll W=4u L=130n M=2
+MPM6 net016 RF_Dout_H VDD VDD p15ll W=4u L=130n M=2
+MPM7 net020 net016 VDD VDD p15ll W=4u L=130n M=2
+MM9 net027 net024 A1 A1 p33e2r W=20u L=800n M=1
+MM7 net024 net027 A1 A1 p33e2r W=20u L=800n M=1
+MM21 net34 net92 A1 A1 p33e2r W=20u L=800n M=1
+MM20 net92 net34 A1 A1 p33e2r W=20u L=800n M=1
+MM10 net030 net030 a2 a2 p33e2r W=1u L=2u M=1
+MM11 net054 net054 net030 net030 p33e2r W=10u L=1u M=1
+MM8 net030 net92 a2 a2 p33e2r W=20u L=800n M=1
+MM12 anten1 net027 gnd gnd n33e2r W=50u L=1u M=10
+MM6 anten2 net027 gnd gnd n33e2r W=50u L=1u M=10
+MM25 net049 net34 gnd gnd n33e2r W=50u L=1u M=1
+MM26 net050 net34 gnd gnd n33e2r W=50u L=1u M=1
+MM23 net92 net101 gnd gnd n33e2r W=20u L=600n M=1
+MM14 anten2 net054 gnd gnd n33e2r W=100u L=1u M=10
+MM24 net34 net105 gnd gnd n33e2r W=20u L=600n M=1
+MM13 anten1 net054 gnd gnd n33e2r W=100u L=1u M=10
+MM30 anten1 anten1 A1 gnd n33e2r W=100u L=1u M=1
+MM31 anten2 anten2 A1 gnd n33e2r W=100u L=1u M=1
+MM29 anten1 anten2 gnd gnd n33e2r W=100u L=1u M=1
+MM27 anten2 anten2 a2 gnd n33e2r W=10u L=1u M=1
+MM28 anten2 anten1 gnd gnd n33e2r W=100u L=1u M=1
+MM19 anten1 anten1 a2 gnd n33e2r W=10u L=1u M=1
+MM16 anten1 anten1 A3 gnd n33e2r W=10u L=1u M=1
+MM15 anten2 anten2 A3 gnd n33e2r W=10u L=1u M=1
+MM33 anten1 anten1 A4 gnd n33e2r W=10u L=1u M=1
+MM32 anten2 anten2 A4 gnd n33e2r W=10u L=1u M=1
+MM4 net024 net016 gnd gnd n33e2r W=20u L=600n M=1
+MM5 net027 net020 gnd gnd n33e2r W=20u L=600n M=1
+MNM2 net105 net101 gnd gnd n15ll W=4u L=130n M=2
+MNM0 net101 RF_Dout gnd gnd n15ll W=4u L=130n M=2
+MNM11 net016 RF_Dout_H gnd gnd n15ll W=4u L=130n M=2
+MNM12 net020 net016 gnd gnd n15ll W=4u L=130n M=2
+XC1 net044 net054 pipe2r_ckt M=1 W=31.2u L=6.174u
+.ENDS

@@ -1,0 +1,51 @@
+************************************************************************
+* Library Name: CD2101
+* Cell Name:    dem100_v5
+* View Name:    schematic
+************************************************************************
+
+.SUBCKT dem100_v5 A1 A4 VDD bias decode_en2 dem100 dem100_en gnd
+*.PININFO A1:I A4:I VDD:I bias:I dem100_en:I gnd:I decode_en2:O dem100:O
+MPM2 net0199 net0195 VDD VDD p15ll W=2u L=2u M=2
+MPM0 net0195 dem100_en VDD VDD p15ll W=2u L=2u M=2
+MPM4 net0118 net0160 VDD VDD p15ll W=1u L=500n M=1
+MPM6 dem100 net0118 VDD VDD p15ll W=1u L=500n M=3
+MNM0 net0195 dem100_en gnd gnd n15ll W=2u L=2u M=2
+MNM2 net0199 net0195 gnd gnd n15ll W=2u L=2u M=2
+MNM4 net0118 net0160 gnd gnd n15ll W=500n L=500n M=1
+MNM6 dem100 net0118 gnd gnd n15ll W=500n L=500n M=3
+MM0 net18 bias A1 A1 p33e2r W=1u L=3u M=1
+MM11 decode_en2 net028 vdd3 vdd3 p33e2r W=2u L=1u M=1
+MM2 net028 A4 vdd3 vdd3 p33e2r W=2u L=1u M=1
+MM15 net028 decode_en2 vdd3 vdd3 p33e2r W=1u L=1u M=1
+MM24 dem100v1 decode_en2 vdd3 vdd3 p33e2r W=2u L=1u M=1
+MM27 net0111 net0236 A1 A1 p33e2r W=2u L=8u M=1
+MM28 net0236 net0111 A1 A1 p33e2r W=2u L=8u M=1
+MM33 vdd3 net0111 A1 A1 p33e2r W=10u L=800n M=2
+MM36 net0160 dem100v1 VDD VDD p33e2r W=10u L=800n M=1
+MM8 net18 net18 gnd gnd n33e2r W=1u L=1u M=1
+MM4 net15 net18 gnd gnd n33e2r W=6u L=1u M=1
+MM9 A4 A1 net15 gnd n33e2r W=10u L=2.5u M=1
+MM12 net028 decode_en2 net0121 gnd n33e2r W=2u L=1u M=1
+MM5 net043 A4 gnd gnd n33e2r W=2u L=1u M=1
+MM10 decode_en2 net028 net035 gnd n33e2r W=2u L=1u M=1
+MM1 net028 A4 net047 gnd n33e2r W=2u L=1u M=1
+MM23 dem100v1 decode_en2 net077 gnd n33e2r W=2u L=1u M=1
+MM3 net047 A4 net043 gnd n33e2r W=1u L=1u M=1
+MM19 net0101 decode_en2 net097 gnd n33e2r W=2u L=1u M=1
+MM7 net035 net028 net039 gnd n33e2r W=2u L=1u M=1
+MM6 net039 net028 gnd gnd n33e2r W=2u L=1u M=1
+MM13 net0121 decode_en2 net0117 gnd n33e2r W=2u L=1u M=1
+MM18 net0105 decode_en2 net0109 gnd n33e2r W=2u L=1u M=1
+MM17 net0109 decode_en2 net0113 gnd n33e2r W=2u L=1u M=1
+MM14 net0117 decode_en2 net0105 gnd n33e2r W=2u L=1u M=1
+MM16 net0113 decode_en2 net0101 gnd n33e2r W=2u L=1u M=1
+MM20 net097 decode_en2 gnd gnd n33e2r W=2u L=1u M=1
+MM22 net077 decode_en2 net081 gnd n33e2r W=2u L=1u M=1
+MM25 net0236 net0195 gnd gnd n33e2r W=2u L=2u M=1
+MM21 net081 decode_en2 gnd gnd n33e2r W=2u L=1u M=1
+MM26 net0111 net0199 gnd gnd n33e2r W=40u L=2u M=1
+MM34 dem100v1 net0111 gnd gnd n33e2r W=4u L=2.5u M=1
+MM35 net0160 dem100v1 gnd gnd n33e2r W=10u L=600n M=1
+XC5 A4 gnd pipe2r_ckt M=2 W=8u L=8u
+.ENDS
