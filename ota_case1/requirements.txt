@@ -1,0 +1,4 @@
+# 本文件已废弃：依赖清单统一到仓库根目录的 requirements.txt。
+# 安装请执行（在仓库根目录）：
+#     pip install -r requirements.txt
+# 本目录（ota_case1）是主程序的一个子模块，没有独立的依赖集合。

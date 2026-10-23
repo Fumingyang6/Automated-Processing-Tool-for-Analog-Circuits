@@ -1,0 +1,106 @@
+** sch_path: /home/zk/k/schematic1_1/schematic1_1.sch
+
+.include /home/zk/zhangke/code/sky130_ldo_rl-main/python/simulations/ota_vars.spice
+
+.subckt schematic1_1 GND VDD out vb vinn vinp
+XM3 net2 net2 GND GND sky130_fd_pr__nfet_g5v0d10v5 L=L_M3 W=W_M3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=M_M3
+XM4 net3 net2 GND GND sky130_fd_pr__nfet_g5v0d10v5 L=L_M4 W=W_M4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=M_M4
+XM6 out net3 GND GND sky130_fd_pr__nfet_g5v0d10v5 L=L_M6 W=W_M6 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=M_M6
+XM0 net1 vb vdd vdd sky130_fd_pr__pfet_g5v0d10v5 L=L_M0 W=W_M0 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=M_M0
+XM5 out vb vdd vdd sky130_fd_pr__pfet_g5v0d10v5 L=L_M5 W=W_M5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=M_M5
+XM1 net2 vinn net1 vdd sky130_fd_pr__pfet_g5v0d10v5 L=L_M1 W=W_M1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=M_M1
+XM2 net3 vinp net1 vdd sky130_fd_pr__pfet_g5v0d10v5 L=L_M2 W=W_M2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=M_M2
+XC1 out net3 sky130_fd_pr__cap_mim_m3_1 W=2 L=2 MF=1 m=1
+.ends schematic1_1
+
+X1 GND VDD out vb vinn vinp schematic1_1
+
+.lib /usr/local/share/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+* 差模输入信号
+Vdd vdd 0 vdd
+vinp vinp 0 DC 0 AC 1mV
+vinn vinn 0 DC 0 AC 1mV
+Vb vb 0 vb
+**** begin user architecture code
+
+
+.control
+* 保存所有电压和电流数据
+save all
+.options savecurrents 
+set filetype=ascii
+set units=degrees
+
+* 设置仿真温度
+set temp=27
+
+* DC操作点分析
+op
+.dc op
+.include /home/zk/zhangke/code/sky130_ldo_rl-main/python/simulations/ota_dev_params.spice
+
+* DC sweep
+dc VDD 1 3 0.01
+plot v(VDD) v(out)
+wrdata ota_dc v(out)
+
+* Transient analysis with load regulation
+* do not miss the space between the square bracket and number
+tran 10n 100u
+plot v(out)
+wrdata ota_load_reg v(out)
+
+* 交流(AC)分析
+* 设置AC扫描步数和频率范围
+ac dec 100 10 1G
+
+* 增益和带宽分析
+* 输出增益和带宽数据
+let gain = vdb(out)/vdb(vinp)
+plot gain
+wrdata ota_gain_bandwidth gain
+
+* acm
+let acm = v(out)/v(vinp)
+plot acm
+wrdata ota_acm acm
+
+* 相位裕度分析
+* 输出相位裕度数据
+alter @vinn[acmag]=-1
+ac dec 100 10 1G
+let phase_margin = vp(out) - vp(vinp)
+plot phase_margin
+wrdata ota_phase_margin phase_margin
+
+* 共模抑制比(CMRR)分析
+alter @vinn[acmag]=0
+ac dec 100 10 1G
+
+let adm = v(out)/v(vinp)
+plot adm
+wrdata ota_adm adm
+
+* PSRR分析
+ac dec 100 10 1G
+vdd vdd 0 AC 1
+let psrr = vdb(out)
+plot psrr
+wrdata ota_psrr psrr
+
+* 结束仿真
+.endc
+
+
+**** end user architecture code
+
+.GLOBAL GND
+.end

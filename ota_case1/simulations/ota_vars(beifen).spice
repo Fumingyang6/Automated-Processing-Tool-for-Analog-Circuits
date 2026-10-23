@@ -1,0 +1,10 @@
+.param W_M0=0.42 L_M0=0.5 M_M0=1
+.param W_M1=0.42 L_M1=0.5 M_M1=1
+.param W_M2=0.42 L_M2=0.5 M_M2=1
+.param W_M3=0.42 L_M3=0.5 M_M3=1
+.param W_M4=0.42 L_M4=0.5 M_M4=1
+.param W_M5=0.42 L_M5=0.5 M_M5=1
+.param W_M6=0.42 L_M6=0.5 M_M6=1
+.param Vb=1.1166186541318894
+.param VDD=5
+.param GND=0

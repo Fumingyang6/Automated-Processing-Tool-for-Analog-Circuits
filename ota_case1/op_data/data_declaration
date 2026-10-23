@@ -1,0 +1,7 @@
+每个case分别对应四个csv文件，以case1为例：case1包括circuit_data_ea_case1_op.csv/circuit_data_random_case1_op.csv/circuit_data_case1_op_train.csv/circuit_data_case1_op_test.csv四个数据集.
+前两个的容量分别是6000/1000，生成方式分别为EA/random；后两个的容量分别是5000/2000，分别是训练集和测试集。
+其中训练集的来源是第一个数据集中的前5000条数据，测试集的来源是第一个数据集中的后1000条数据 + 第二个数据集中的1000条数据
+
+继续以case1为例，circuit_data_random_random_phase_data.csv 为在训练初期的随机阶段（前1000轮）中保存到的仿真数据
+circuit_data_case1_op_retrain.csv 为在第1001轮时，将原来的训练集circuit_data_case1_op_train.csv和circuit_data_random_random_phase_data.csv组合（有权重设置），对ANN进行再训练
+circuit_data_rl_phase_data.csv 为在第1001轮之后，继续收集真实仿真的数据，每收集到500个即再次更新阈值
