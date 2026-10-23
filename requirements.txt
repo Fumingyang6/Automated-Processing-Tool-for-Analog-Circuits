@@ -1,0 +1,61 @@
+# 安装命令：pip install -r requirements.txt
+# 适用 Python 3.10 ~ 3.12。版本写成下限而不是硬锁，原因：
+#   - numpy 1.24.3 没有 Python 3.12 的 wheel，硬锁会让 3.12 用户装不上；
+#   - torch / torch_geometric / dgl 的可用版本随 Python 版本变化，
+#     硬锁成旧版等于只允许一个 Python 版本安装。
+# 需要精确复现时请用 requirements-lock.txt（仅在 Python 3.10 上验证过）。
+
+numpy>=1.24.3,<2.0
+scipy>=1.13.1
+matplotlib>=3.7.1
+networkx>=3.2.1
+
+# 数据处理与可视化
+pandas>=2.2.2
+tabulate>=0.9.0
+pillow>=11.3.0
+
+# PyQt5 UI依赖
+PyQt5>=5.15.9
+PyQt5-Qt5>=5.15.2
+PyQt5_sip>=12.17.1
+
+# 强化学习环境
+gymnasium>=0.28.1
+
+# 电路参数优化模块的神经网络
+scikit-learn>=1.4.2
+
+# GDS 版图读写：设备生成（电路版图生成）和版图查看器都要用，缺了程序起不来
+# Windows 上 PyPI 没有预编译 wheel，走 conda-forge（见 安装依赖.bat）
+gdspy==1.6.13
+
+# 图神经网络（GNN）依赖
+# torch 未锁定版本：CPU 版直接 pip 安装即可；
+# 需要 GPU 的话请先按 https://pytorch.org 选择对应 CUDA 版本安装 torch，
+# 再执行本文件，避免这里把已装好的 GPU 版覆盖成 CPU 版。
+torch>=2.0.1
+dgl>=1.1.2
+torch_geometric>=2.3.1
+# 说明：torch-cluster / torch-scatter / torch-sparse / torch-spline-conv
+# 不是本工程的必需依赖（GNN 走 torch_geometric 的 RGCN/GCN/GAT，
+# 自动布局用 dgl）。它们在 PyPI 上没有 Windows wheel，只能从
+# https://data.pyg.org/whl/ 按 torch 版本单独安装。若确实需要这几个
+# 扩展算子，请自行按上述地址安装，不要写进本文件。
+
+# 通用工具依赖
+click>=8.1.8
+python-dateutil>=2.9.0
+python-dotenv>=1.1.1
+packaging>=25.0
+six>=1.17.0
+importlib_resources>=6.5.2
+zipp>=3.23.0
+contourpy>=1.3.0
+cycler>=0.12.1
+fonttools>=4.60.1
+kiwisolver>=1.4.7
+pyparsing>=3.2.5
+
+# 开发工具
+ipython>=8.12.0
